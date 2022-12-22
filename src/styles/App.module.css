@@ -1,0 +1,41 @@
+.slide {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slide_allow {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 0 10px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.left_allow {
+  border-left: 4px solid #000000;
+  border-bottom: 4px solid #000000;
+}
+
+.right_allow {
+  border-right: 4px solid #000000;
+  border-top: 4px solid #000000;
+}
+
+.slide_rules {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide_rules_item {
+  border: 2px solid #000000;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  margin: 0 15px;
+}

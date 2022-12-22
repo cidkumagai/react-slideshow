@@ -1,5 +1,10 @@
+// React
 import { useEffect, useState } from 'react';
 
+// style-sheet
+import styles from './styles/App.module.css';
+
+// image
 import img1 from './images/1.png';
 import img2 from './images/2.png';
 import img3 from './images/3.png';
@@ -20,71 +25,25 @@ function App() {
     setIndex(index === 0 ? images.length : index - 1);
   };
   return (
-    <div>
-      <div
-        style={{
-          width: '80%',
-          height: '100vh',
-          margin: '0 auto',
-          textAlign: 'center',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-        onClick={() => increment()}
-      >
-        <div
-          style={{
-            display: 'inline-block',
-            width: '18px',
-            height: '18px',
-            margin: '0 10px',
-            borderLeft: '4px solid #000',
-            borderBottom: '4px solid #000',
-            transform: 'rotate(45deg)',
-            cursor: 'pointer',
-          }}
-        />
-        <div>
-          <img src={images[index]} alt='' />
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            {images.map((_item, number) => {
-              return (
-                <p
-                  style={{
-                    color: number === index ? 'black' : 'white',
-                    backgroundColor: number === index ? 'white' : 'black',
-                    border: '2px solid #000000',
-                    borderRadius: '100%',
-                    width: '20px',
-                    height: '20px',
-                    margin: '0 15px',
-                  }}
-                ></p>
-              );
-            })}
-          </div>
+    <div className={styles.slide} onClick={() => increment()}>
+      <div className={`${styles.slide_allow} ${styles.left_allow}`} />
+      <div>
+        <img src={images[index]} alt='' />
+        <div className={styles.slide_rules}>
+          {images.map((_item, number) => {
+            return (
+              <p
+                className={styles.slide_rules_item}
+                style={{
+                  color: number === index ? 'black' : 'white',
+                  backgroundColor: number === index ? 'white' : 'black',
+                }}
+              ></p>
+            );
+          })}
         </div>
-        <div
-          style={{
-            display: 'inline-block',
-            width: '18px',
-            height: '18px',
-            margin: '0 10px',
-            borderRight: '4px solid #000',
-            borderTop: '4px solid #000',
-            transform: 'rotate(45deg)',
-            cursor: 'pointer',
-          }}
-          onClick={() => decrement()}
-        />
       </div>
+      <div className={`${styles.slide_allow} ${styles.right_allow}`} onClick={() => decrement()} />
     </div>
   );
 }
