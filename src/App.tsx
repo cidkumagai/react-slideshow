@@ -17,16 +17,16 @@ function App() {
       setIndex(index >= images.length - 1 ? 0 : index + 1);
     }, 3000);
     return () => clearInterval(timerId);
-  }, [index]);
+  }, [index, images.length]);
   const increment = () => {
     setIndex(index >= images.length - 1 ? 0 : index + 1);
   };
   const decrement = () => {
-    setIndex(index === 0 ? images.length : index - 1);
+    setIndex(index === 0 ? images.length - 1 : index - 1);
   };
   return (
-    <div className={styles.slide} onClick={() => increment()}>
-      <div className={`${styles.slide_allow} ${styles.left_allow}`} />
+    <div className={styles.slide}>
+      <div className={`${styles.slide_allow} ${styles.left_allow}`} onClick={() => decrement()} />
       <div>
         <img src={images[index]} alt='' />
         <div className={styles.slide_rules}>
@@ -38,12 +38,12 @@ function App() {
                   color: number === index ? 'black' : 'white',
                   backgroundColor: number === index ? 'white' : 'black',
                 }}
-              ></p>
+              />
             );
           })}
         </div>
       </div>
-      <div className={`${styles.slide_allow} ${styles.right_allow}`} onClick={() => decrement()} />
+      <div className={`${styles.slide_allow} ${styles.right_allow}`} onClick={() => increment()} />
     </div>
   );
 }
