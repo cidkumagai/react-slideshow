@@ -27,16 +27,16 @@ function App() {
   return (
     <div className={styles.slide}>
       <div className={`${styles.slide_allow} ${styles.left_allow}`} onClick={() => decrement()} />
-      <div>
-        <img src={images[index]} alt='' />
-        <div className={styles.slide_rules}>
-          {images.map((_item, number) => {
+      <div className={styles.slide_images_wrapper}>
+        <div className={styles.slide_images_wrapper_box}>
+          {images.map((image, imageIndex) => {
             return (
-              <p
-                className={styles.slide_rules_item}
+              <img
+                src={image}
+                alt=''
+                className={styles.slide_images_wrapper_box_image}
                 style={{
-                  color: number === index ? 'black' : 'white',
-                  backgroundColor: number === index ? 'white' : 'black',
+                  opacity: imageIndex === index ? 1 : 0,
                 }}
               />
             );
@@ -44,6 +44,19 @@ function App() {
         </div>
       </div>
       <div className={`${styles.slide_allow} ${styles.right_allow}`} onClick={() => increment()} />
+      <div className={styles.slide_rules}>
+        {images.map((_item, number) => {
+          return (
+            <p
+              className={styles.slide_rules_item}
+              style={{
+                color: number === index ? 'black' : 'white',
+                backgroundColor: number === index ? 'white' : 'black',
+              }}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
